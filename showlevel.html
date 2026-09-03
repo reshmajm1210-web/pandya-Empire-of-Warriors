@@ -1446,161 +1446,85 @@
     </div>
 
 </div>
-
-
-
 <script>
-
-
     /* =========================
        BACK BUTTON
     ========================== */
-
     function goBack() {
-
         window.location.href = "start2.html";
-
     }
 
-
     /* =========================
-       KING 1
+       KING SELECTION
     ========================== */
-
     function selectKing(number) {
 
         if (number === 1) {
-
-            window.location.href = "showlevel.html";
-
+            window.location.href = "ch1h.html";
         }
 
-    }
+        if (number === 2) {
+            window.location.href = "ch2h.html";
+        }
 
+        if (number === 3) {
+            window.location.href = "ch3h.html";
+        }
+    }
 
     /* =========================
        LOCKED KINGS
     ========================== */
-
     function lockedMessage() {
-
         // Locked kings do nothing for now.
-
     }
-
 
     /* =========================
        SETTINGS
     ========================== */
-
     function openSettings() {
-
-        document
-            .getElementById("settingsOverlay")
-            .classList
-            .add("show");
-
+        document.getElementById("settingsOverlay").classList.add("show");
     }
-
 
     function closeSettings() {
-
-        document
-            .getElementById("settingsOverlay")
-            .classList
-            .remove("show");
-
+        document.getElementById("settingsOverlay").classList.remove("show");
     }
-
 
     function closeSettingsOutside(event) {
-
-        if (
-            event.target.id === "settingsOverlay"
-        ) {
-
+        if (event.target.id === "settingsOverlay") {
             closeSettings();
-
         }
-
     }
-
 
     /* =========================
        TOGGLE SETTINGS
     ========================== */
-
     function toggleSetting(element) {
-
-        element
-            .classList
-            .toggle("active");
-
+        element.classList.toggle("active");
     }
-
 
     /* =========================
        FULLSCREEN
     ========================== */
-
     function toggleFullscreen(element) {
-
-        element
-            .classList
-            .toggle("active");
-
+        element.classList.toggle("active");
 
         if (!document.fullscreenElement) {
-
-            document
-                .documentElement
-                .requestFullscreen()
-                .catch(function() {
-
-                    element
-                        .classList
-                        .remove("active");
-
-                });
-
-        }
-
-        else {
-
+            document.documentElement.requestFullscreen().catch(() => {
+                element.classList.remove("active");
+            });
+        } else {
             document.exitFullscreen();
-
         }
-
     }
-
 
     /* =========================
        RESET GAME
     ========================== */
-
     function resetGame() {
-
         alert("Game has been reset!");
-
- function selectKing(number) {
-
-    if (number === 1) {
-        window.location.href = "ch1h.html";
+        closeSettings();
     }
-
-    if (number === 2) {
-        window.location.href = "ch2h.html";
-    }
-
-    if (number === 3) {
-        window.location.href = "ch3h.html";
-    }
-
-}
-
-    }
-
-
 </script>
 
 
