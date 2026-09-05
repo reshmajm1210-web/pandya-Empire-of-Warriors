@@ -1,51 +1,39 @@
-           // ========================================== 
-// PANDYA EMPIRE - TASK 1 PALACE MISSION 
-// task1.js 
-// ========================================== 
- 
 import * as THREE from "three"; 
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js"; 
 import { OrbitControls } from "three/addons/controls/OrbitControls.js"; 
- 
-// ================= PLAYER DATA ================= 
- 
+
 let coins = Number(localStorage.getItem("pandyaCoins")) || 100; 
 let pearls = Number(localStorage.getItem("pandyaPearls")) || 50; 
 let lives = 5; 
- 
+
 document.getElementById("coinCount").innerText = coins; 
 document.getElementById("pearlCount").innerText = pearls; 
 document.getElementById("lives").innerText = lives; 
- 
-// ================= LOADING SCREEN ================= 
- 
+
 const loadingScreen = document.getElementById("loadingScreen"); 
 const progressBar = document.getElementById("progressBar"); 
- 
+
 let progress = 0; 
- 
+
 const loading = setInterval(() => { 
- 
+
     progress += 4; 
     progressBar.style.width = progress + "%"; 
- 
+
     if(progress >= 100){ 
- 
+
         clearInterval(loading); 
- 
+
         setTimeout(() => { 
             loadingScreen.style.display = "none"; 
         },300); 
- 
+
     } 
- 
+
 },120); 
- 
-// ================= THREE JS SCENE ================= 
- 
+
 const scene = new THREE.Scene(); 
- 
-// Transparent canvas (bg.jpeg is behind) 
+
 const camera = new THREE.PerspectiveCamera( 
     60, 
     window.innerWidth / window.innerHeight, 
@@ -249,19 +237,19 @@ window.addEventListener("resize",()=>{
  
     camera.aspect = window.innerWidth / window.innerHeight; 
     camera.updateProjectionMatrix(); 
- 
+
     renderer.setSize(window.innerWidth,window.innerHeight); 
- 
-}); 
- 
+
+});
+
 // ================= ANIMATION LOOP ================= 
- 
+
 function animate(){ 
- 
+
     requestAnimationFrame(animate); 
- 
+
     renderer.render(scene,camera); 
- 
+
 } 
- 
+
 animate();  
