@@ -167,3 +167,9 @@ function resetGame(){
     alert("Game Reset Successfully!");
 
 }
+
+// ================= BACK BUTTON =================
+
+function goBack(){
+    window.location.href = "showlevel.html";
+}
