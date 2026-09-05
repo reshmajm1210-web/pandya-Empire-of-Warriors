@@ -3,27 +3,31 @@
 // task.js
 // ==========================================
 
-// Default Coins & Pearls
+// ---------------- COINS & PEARLS ----------------
+
+// Default Values
 let coins = Number(localStorage.getItem("pandyaCoins")) || 100;
 let pearls = Number(localStorage.getItem("pandyaPearls")) || 50;
 
-// Default Task Unlock (Task 1 only)
+// Default Unlock (Task 1 Only)
 let unlockedTask = Number(localStorage.getItem("pandyaUnlockedTask")) || 1;
 
-// Update Coins & Pearls on Page Load
+// Load Data
 window.onload = function () {
     updateStats();
     updateTasks();
 };
 
-// ================= UPDATE COINS & PEARLS =================
+// ---------------- UPDATE TOP STATUS ----------------
 
 function updateStats() {
+
     document.getElementById("coins").innerText = coins;
     document.getElementById("pearls").innerText = pearls;
+
 }
 
-// ================= UPDATE TASKS =================
+// ---------------- UPDATE LOCK / UNLOCK ----------------
 
 function updateTasks() {
 
@@ -36,26 +40,23 @@ function updateTasks() {
 
         if (taskNumber <= unlockedTask) {
 
-            // Unlock
-            if(lock) lock.style.display = "none";
-
+            // Unlock Current Task
+            lock.style.display = "none";
             card.classList.add("unlocked");
-            card.classList.remove("locked");
 
         } else {
 
-            // Lock
-            if(lock) lock.style.display = "flex";
-
-            card.classList.add("locked");
+            // Lock Remaining Tasks
+            lock.style.display = "flex";
             card.classList.remove("unlocked");
+
         }
 
     });
 
 }
 
-// ================= OPEN TASK =================
+// ---------------- OPEN TASK PAGE ----------------
 
 function openTask(taskNumber) {
 
@@ -66,40 +67,101 @@ function openTask(taskNumber) {
 
     }
 
-    // Open task pages
-    window.location.href = "task" + taskNumber + ".html";
+    switch(taskNumber){
+
+        case 1:
+            window.location.href = "task1.html";
+            break;
+
+        case 2:
+            window.location.href = "task2.html";
+            break;
+
+        case 3:
+            window.location.href = "task3.html";
+            break;
+
+        case 4:
+            window.location.href = "task4.html";
+            break;
+
+        case 5:
+            window.location.href = "task5.html";
+            break;
+
+        case 6:
+            window.location.href = "task6.html";
+            break;
+
+        default:
+            alert("Task page not found.");
+    }
+
 }
 
-// ================= COMPLETE TASK =================
-// Use this inside task1.html, task2.html...
+// ---------------- COMPLETE TASK ----------------
+// Call completeTask(taskNumber) after finishing a mission.
 
-function completeTask(taskNumber) {
+function completeTask(taskNumber){
 
-    // Give rewards
-    coins += 50;
-    pearls += 10;
+    // Rewards
+    switch(taskNumber){
 
+        case 1:
+            coins += 5000;
+            pearls += 100;
+            break;
+
+        case 2:
+            coins += 1000;
+            pearls += 100;
+            break;
+
+        case 3:
+            coins += 1500;
+            pearls += 150;
+            break;
+
+        case 4:
+            coins += 2000;
+            pearls += 200;
+            break;
+
+        case 5:
+            coins += 2500;
+            pearls += 250;
+            break;
+
+        case 6:
+            coins += 3000;
+            pearls += 300;
+            break;
+
+    }
+
+    // Save Rewards
     localStorage.setItem("pandyaCoins", coins);
     localStorage.setItem("pandyaPearls", pearls);
 
-    // Unlock next task
+    // Unlock Next Task
     if (taskNumber === unlockedTask && taskNumber < 6) {
 
-        unlockedTask = taskNumber + 1;
+        unlockedTask++;
         localStorage.setItem("pandyaUnlockedTask", unlockedTask);
 
     }
 
     alert("🏆 Task " + taskNumber + " Completed!\n✨ Next Task Unlocked!");
 
-    // Return to Task Board
+    // Back to Task Board
     window.location.href = "task.html";
+
 }
 
-// ================= RESET TASK BOARD =================
+// ---------------- RESET TASK BOARD ----------------
 // Type resetTasks() in browser console if needed.
 
-function resetTasks() {
+function resetTasks(){
 
     coins = 100;
     pearls = 50;
@@ -112,5 +174,6 @@ function resetTasks() {
     updateStats();
     updateTasks();
 
-    alert("Task Board Reset Successfully!");
+    alert("🔄 Task Board Reset Successfully!");
+
 }
