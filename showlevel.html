@@ -1447,16 +1447,10 @@
 
 </div>
 <script>
-    /* =========================
-       BACK BUTTON
-    ========================== */
+
     function goBack() {
         window.location.href = "start2.html";
     }
-
-    /* =========================
-       KING SELECTION
-    ========================== */
     function selectKing(number) {
 
         if (number === 1) {
@@ -1472,16 +1466,10 @@
         }
     }
 
-    /* =========================
-       LOCKED KINGS
-    ========================== */
     function lockedMessage() {
-        // Locked kings do nothing for now.
+
     }
 
-    /* =========================
-       SETTINGS
-    ========================== */
     function openSettings() {
         document.getElementById("settingsOverlay").classList.add("show");
     }
@@ -1496,16 +1484,10 @@
         }
     }
 
-    /* =========================
-       TOGGLE SETTINGS
-    ========================== */
     function toggleSetting(element) {
         element.classList.toggle("active");
     }
 
-    /* =========================
-       FULLSCREEN
-    ========================== */
     function toggleFullscreen(element) {
         element.classList.toggle("active");
 
@@ -1518,9 +1500,6 @@
         }
     }
 
-    /* =========================
-       RESET GAME
-    ========================== */
     function resetGame() {
         alert("Game has been reset!");
         closeSettings();
